@@ -5,7 +5,11 @@ webpackJsonp([0],[
 "use strict";
 
 
-//state
+/* state -- This is the object where the pokemon are stored,
+with all of their stats including the health used during the game.
+
+
+*/
 var gameState = {
   userPokemon: "",
   rivalPokemon: "",
@@ -35,7 +39,7 @@ var gameState = {
     img: "http://www.smogon.com/dex/media/sprites/xy/squirtle.gif"
   }],
 
-  elements: {
+  elements: { // picking essential elements referenced through the game
     pokemonEl: document.querySelector(".select-screen").querySelectorAll(".character"),
     battleScreenEl: document.getElementById("battle-screen"),
     attackBtnsEl: document.getElementById("battle-screen").querySelectorAll(".attack")
@@ -79,7 +83,7 @@ var gameState = {
         gameState.currentPokemon[0].health = gameState.calculateInitialHealth(gameState.currentPokemon);
         gameState.currentPokemon[0].originalHealth = gameState.calculateInitialHealth(gameState.currentPokemon);
         gameState.currentRivalPokemon[0].health = gameState.calculateInitialHealth(gameState.currentRivalPokemon);
-        gameState.currentRivalPokemon[0].originalHealth = gameState.calculateInitialHealth(gameState.currentPokemon);
+        gameState.currentRivalPokemon[0].originalHealth = gameState.calculateInitialHealth(gameState.currentRivalPokemon);
         console.log(gameState);
       };
 

@@ -1,4 +1,10 @@
-//state
+
+
+/* state -- This is the object where the pokemon are stored,
+with all of their stats including the health used during the game.
+
+
+*/
 var gameState = {
   userPokemon: "",
   rivalPokemon: "",
@@ -34,7 +40,7 @@ var gameState = {
     }
   ],
 
-  elements: {
+  elements: { // picking essential elements referenced through the game
     pokemonEl: document
       .querySelector(".select-screen")
       .querySelectorAll(".character"),
@@ -95,7 +101,7 @@ var gameState = {
           gameState.currentRivalPokemon
         );
         gameState.currentRivalPokemon[0].originalHealth = gameState.calculateInitialHealth(
-          gameState.currentPokemon
+          gameState.currentRivalPokemon
         );
         console.log(gameState);
       };
