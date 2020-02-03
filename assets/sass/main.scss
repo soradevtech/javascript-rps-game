@@ -41,6 +41,15 @@ background: linear-gradient(to bottom, #0a0618 0%,#261c53 100%); /* W3C, IE10+, 
   padding: 15px;
   text-align: center;
 }
+.header .flaticon {
+  float: left;
+  font-family: 'Press Start 2P', cursive;
+  font-size: .8rem;
+  padding: 0 15px;
+}
+.header .flaticon {
+  text-decoration: none;
+}
 .select-screen{
   position: relative;
 }

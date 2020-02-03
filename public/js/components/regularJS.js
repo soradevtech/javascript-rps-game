@@ -11,24 +11,24 @@ with all of their stats including the health used during the game.
 
 */
 var gameState = {
-  userPokemon: "",
+  userHero: "",
   rivalPokemon: "",
-  pokemonDB: [{
+  heroStats: [{
     name: "charmander",
     type: "fire",
     hp: 39,
     attack: 52,
     defense: 43,
     level: 1,
-    img: "http://www.smogon.com/dex/media/sprites/xy/charmander.gif"
+    img: "https://images.tre-marshall.com/pokemon-game/superhero-a.svg"
   }, {
     name: "bulbasaur",
-    type: "grass",
+    type: "earth",
     hp: 45,
     attack: 49,
     defense: 49,
     level: 1,
-    img: "http://www.smogon.com/dex/media/sprites/xy/bulbasaur.gif"
+    img: "https://images.tre-marshall.com/pokemon-game/superhero-b.svg"
   }, {
     name: "squirtle",
     type: "water",
@@ -36,7 +36,7 @@ var gameState = {
     attack: 48,
     defense: 65,
     level: 1,
-    img: "http://www.smogon.com/dex/media/sprites/xy/squirtle.gif"
+    img: "https://images.tre-marshall.com/pokemon-game/superhero-c.svg"
   }],
 
   elements: { // picking essential elements referenced through the game
@@ -59,7 +59,7 @@ var gameState = {
         var player2Img = document.querySelector(".player2").getElementsByTagName("img");
 
         // save the current pokemon
-        gameState.userPokemon = pokemonName;
+        gameState.userHero = pokemonName;
 
         // cpu picks a pokemon
         gameState.cpuPick();
@@ -68,13 +68,13 @@ var gameState = {
         gameState.elements.battleScreenEl.classList.toggle("active");
 
         // select data from current user pokemon
-        gameState.currentPokemon = gameState.pokemonDB.filter(function (pokemon) {
-          return pokemon.name == gameState.userPokemon;
+        gameState.currentPokemon = gameState.heroStats.filter(function (pokemon) {
+          return pokemon.name == gameState.userHero;
         });
         player1Img[0].src = gameState.currentPokemon[0].img;
 
         // select data from current cpu pokemon
-        gameState.currentRivalPokemon = gameState.pokemonDB.filter(function (pokemon) {
+        gameState.currentRivalPokemon = gameState.heroStats.filter(function (pokemon) {
           return pokemon.name == gameState.rivalPokemon;
         });
         player2Img[0].src = gameState.currentRivalPokemon[0].img;
@@ -145,7 +145,7 @@ var gameState = {
     do {
       gameState.rivalPokemon = gameState.elements.pokemonEl[gameState.randomNumber(0, 3)].dataset.pokemon;
       console.log('looping' + gameState.rivalPokemon);
-    } while (gameState.userPokemon == gameState.rivalPokemon);
+    } while (gameState.userHero == gameState.rivalPokemon);
   },
 
   play: function play(userAttack, cpuAttack) {
