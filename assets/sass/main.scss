@@ -47,8 +47,14 @@ background: linear-gradient(to bottom, #0a0618 0%,#261c53 100%); /* W3C, IE10+, 
   font-size: .8rem;
   padding: 0 15px;
 }
-.header .flaticon {
+.header .flaticon a {
   text-decoration: none;
+}
+.header .flaticon a:link {
+  color: yellow;
+}
+.header .flaticon a:visited {
+  color: grey;
 }
 .select-screen{
   position: relative;
@@ -93,13 +99,13 @@ display: flex;
   transition: background .2s ease-in-out;
 }
 
-.select-screen .main .character.charmander{
+.select-screen .main .character.hero-a{
   background: #FA7A47;
 }
-.select-screen .main .character.bulbasaur{
+.select-screen .main .character.hero-b{
   background: #6BFA83;
 }
-.select-screen .main .character.squirtle{
+.select-screen .main .character.hero-c{
   background: #64B2FA;
 }
 

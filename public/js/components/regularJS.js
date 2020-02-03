@@ -5,42 +5,42 @@ webpackJsonp([0],[
 "use strict";
 
 
-/* state -- This is the object where the pokemon are stored,
+/* state -- This is the object where the heroes are stored,
 with all of their stats including the health used during the game.
 
 
 */
 var gameState = {
   userHero: "",
-  rivalPokemon: "",
+  rivalHero: "",
   heroStats: [{
-    name: "charmander",
+    name: "hero-a",
     type: "fire",
     hp: 39,
     attack: 52,
     defense: 43,
     level: 1,
-    img: "https://images.tre-marshall.com/pokemon-game/superhero-a.svg"
+    img: "https://images.tre-marshall.com/rps-game/superhero-a.svg"
   }, {
-    name: "bulbasaur",
+    name: "hero-b",
     type: "earth",
     hp: 45,
     attack: 49,
     defense: 49,
     level: 1,
-    img: "https://images.tre-marshall.com/pokemon-game/superhero-b.svg"
+    img: "https://images.tre-marshall.com/rps-game/superhero-b.svg"
   }, {
-    name: "squirtle",
+    name: "hero-c",
     type: "water",
     hp: 44,
     attack: 48,
     defense: 65,
     level: 1,
-    img: "https://images.tre-marshall.com/pokemon-game/superhero-c.svg"
+    img: "https://images.tre-marshall.com/rps-game/superhero-c.svg"
   }],
 
   elements: { // picking essential elements referenced through the game
-    pokemonEl: document.querySelector(".select-screen").querySelectorAll(".character"),
+    heroEl: document.querySelector(".select-screen").querySelectorAll(".character"),
     battleScreenEl: document.getElementById("battle-screen"),
     attackBtnsEl: document.getElementById("battle-screen").querySelectorAll(".attack")
   },
@@ -48,42 +48,42 @@ var gameState = {
   init: function init() {
     //the initial loop
     var i = 0;
-    while (i < gameState.elements.pokemonEl.length) {
+    while (i < gameState.elements.heroEl.length) {
       //add function to all characters on screen select
-      gameState.elements.pokemonEl[i].onclick = function () {
-        // current selected pokemon's name
-        var pokemonName = this.dataset.pokemon;
+      gameState.elements.heroEl[i].onclick = function () {
+        // current selected hero's name
+        var heroName = this.dataset.heroes;
 
         //elements for images on battle screen
         var player1Img = document.querySelector(".player1").getElementsByTagName("img");
         var player2Img = document.querySelector(".player2").getElementsByTagName("img");
 
-        // save the current pokemon
-        gameState.userHero = pokemonName;
+        // save the current hero
+        gameState.userHero = heroName;
 
-        // cpu picks a pokemon
+        // cpu picks a hero
         gameState.cpuPick();
 
         // change screen to battle scene
         gameState.elements.battleScreenEl.classList.toggle("active");
 
-        // select data from current user pokemon
-        gameState.currentPokemon = gameState.heroStats.filter(function (pokemon) {
-          return pokemon.name == gameState.userHero;
+        // select data from current user hero
+        gameState.currentHero = gameState.heroStats.filter(function (hero) {
+          return hero.name == gameState.userHero;
         });
-        player1Img[0].src = gameState.currentPokemon[0].img;
+        player1Img[0].src = gameState.currentHero[0].img;
 
-        // select data from current cpu pokemon
-        gameState.currentRivalPokemon = gameState.heroStats.filter(function (pokemon) {
-          return pokemon.name == gameState.rivalPokemon;
+        // select data from current cpu hero
+        gameState.currentrivalHero = gameState.heroStats.filter(function (hero) {
+          return hero.name == gameState.rivalHero;
         });
-        player2Img[0].src = gameState.currentRivalPokemon[0].img;
+        player2Img[0].src = gameState.currentrivalHero[0].img;
 
-        // current user and cpu pokemon initial health
-        gameState.currentPokemon[0].health = gameState.calculateInitialHealth(gameState.currentPokemon);
-        gameState.currentPokemon[0].originalHealth = gameState.calculateInitialHealth(gameState.currentPokemon);
-        gameState.currentRivalPokemon[0].health = gameState.calculateInitialHealth(gameState.currentRivalPokemon);
-        gameState.currentRivalPokemon[0].originalHealth = gameState.calculateInitialHealth(gameState.currentRivalPokemon);
+        // current user and cpu hero initial health
+        gameState.currentHero[0].health = gameState.calculateInitialHealth(gameState.currentHero);
+        gameState.currentHero[0].originalHealth = gameState.calculateInitialHealth(gameState.currentHero);
+        gameState.currentrivalHero[0].health = gameState.calculateInitialHealth(gameState.currentrivalHero);
+        gameState.currentrivalHero[0].originalHealth = gameState.calculateInitialHealth(gameState.currentrivalHero);
         console.log(gameState);
       };
 
@@ -143,109 +143,109 @@ var gameState = {
 
   cpuPick: function cpuPick() {
     do {
-      gameState.rivalPokemon = gameState.elements.pokemonEl[gameState.randomNumber(0, 3)].dataset.pokemon;
-      console.log('looping' + gameState.rivalPokemon);
-    } while (gameState.userHero == gameState.rivalPokemon);
+      gameState.rivalHero = gameState.elements.heroEl[gameState.randomNumber(0, 3)].dataset.heroes;
+      console.log('looping' + gameState.rivalHero);
+    } while (gameState.userHero == gameState.rivalHero);
   },
 
   play: function play(userAttack, cpuAttack) {
-    var currentPokemon = gameState.currentPokemon[0];
-    var currentRivalPokemon = gameState.currentRivalPokemon[0];
-    currentPokemon.owner = 'user';
-    currentRivalPokemon.owner = 'cpu';
+    var currentHero = gameState.currentHero[0];
+    var currentrivalHero = gameState.currentrivalHero[0];
+    currentHero.owner = 'user';
+    currentrivalHero.owner = 'cpu';
     switch (userAttack) {
       case "rock":
         if (cpuAttack == "paper") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 0.5, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 0.5, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 2, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 2, currentHero, currentrivalHero);
             }
           }
         }
         if (cpuAttack == "scissors") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 2, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 2, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 0.5, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 0.5, currentHero, currentrivalHero);
             }
           }
         }
         if (cpuAttack == "rock") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 1, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 1, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 1, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 1, currentHero, currentrivalHero);
             }
           }
         }
         break;
       case "paper":
         if (cpuAttack == "paper") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 1, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 1, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 1, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 1, currentHero, currentrivalHero);
             }
           }
         }
         if (cpuAttack == "scissors") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 0.5, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 0.5, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 2, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 2, currentHero, currentrivalHero);
             }
           }
         }
         if (cpuAttack == "rock") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 2, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 2, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 0.5, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 0.5, currentHero, currentrivalHero);
             }
           }
         }
         break;
       case "scissors":
         if (cpuAttack == "paper") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 2, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 2, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 0.5, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 0.5, currentHero, currentrivalHero);
             }
           }
         }
         if (cpuAttack == "scissors") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 1, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 1, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 1, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 1, currentHero, currentrivalHero);
             }
           }
         }
         if (cpuAttack == "rock") {
-          if (currentPokemon.health >= 0 && currentRivalPokemon.health >= 0) {
+          if (currentHero.health >= 0 && currentrivalHero.health >= 0) {
             // user
-            gameState.attackMove(currentPokemon.attack, currentPokemon.level, 0.8, 0.5, currentRivalPokemon, currentPokemon);
-            if (currentRivalPokemon.health >= 1) {
+            gameState.attackMove(currentHero.attack, currentHero.level, 0.8, 0.5, currentrivalHero, currentHero);
+            if (currentrivalHero.health >= 1) {
               // cpu
-              gameState.attackMove(currentRivalPokemon.attack, currentRivalPokemon.level, 0.8, 2, currentPokemon, currentRivalPokemon);
+              gameState.attackMove(currentrivalHero.attack, currentrivalHero.level, 0.8, 2, currentHero, currentrivalHero);
             }
           }
         }
@@ -261,7 +261,7 @@ make a refresh button/notification when it's done?
 
 make hp bars go down according to damage default?
 
-change enemy parameter in attackMove function to pokemon or something
+change enemy parameter in attackMove function to hero or something
 
 adjust the fight scene background to just fit
 

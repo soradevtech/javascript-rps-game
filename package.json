@@ -1,7 +1,7 @@
 {
-  "name": "JS-Pokemon-Battle",
+  "name": "JS-RPS-Battle",
   "version": "1.0.0",
-  "description": "Vanilla JavaScript Pokemon Game",
+  "description": "Vanilla JavaScript RPS Game",
   "main": "index.js",
   "author": "joe santos garcia",
   "license": "MIT",
