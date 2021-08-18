@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Rock Paper Scissors Battle</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Bangers|Cabin+Sketch:400,700|Freckle+Face|Press+Start+2P"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="select-screen">
+            <div class="header">
+                <!-- <div class="mode">VS Mode</div> -->
+                <div class="title">Rock-Paper-Scissors - Choose a Hero</div>
+                <div class="flaticon">
+                    <p style="font-style: italic">
+                        Icons made by
+                        <a
+                            href="https://www.flaticon.com/authors/freepik"
+                            title="Freepik"
+                            >Freepik</a
+                        >
+                        from
+                        <a href="https://www.flaticon.com/" title="Flaticon">
+                            www.flaticon.com</a
+                        >
+                    </p>
+
+                    <p style="font-style: italic">
+                        <a
+                            href="https://www.flickr.com/photos/40694577@N05/13109425345"
+                            >"Fotomural 163"</a
+                        ><span>
+                            by
+                            <a href="https://www.flickr.com/photos/40694577@N05"
+                                >PAPELMURAL.COM</a
+                            ></span
+                        >
+                        is licensed under
+                        <a
+                            href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html"
+                            style="margin-right: 5px"
+                            >CC BY 2.0</a
+                        ><a
+                            href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                display: inline-block;
+                                white-space: none;
+                                margin-top: 2px;
+                                margin-left: 3px;
+                                height: 22px !important;
+                            "
+                            ><img
+                                style="
+                                    height: inherit;
+                                    margin-right: 3px;
+                                    display: inline-block;
+                                "
+                                src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=c75acc46-6fd5-42f0-85ce-c215a9cf0d93" /><img
+                                style="
+                                    height: inherit;
+                                    margin-right: 3px;
+                                    display: inline-block;
+                                "
+                                src="https://search.creativecommons.org/static/img/cc-by_icon.svg"
+                        /></a>
+                    </p>
+                </div>
+            </div>
+            <div class="main">
+                <div class="character hero-a" data-heroes="hero-a">
+                    <div class="title">Hero A</div>
+                    <div
+                        style="
+                            background: url(img/superhero-a.svg) no-repeat
+                                center center;
+                            -webkit-background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                            background-size: 100% 100%;
+                            height: 100px;
+                            width: 100px;
+                        "
+                    ></div>
+                </div>
+
+                <div class="character hero-b" data-heroes="hero-b">
+                    <div class="title">Hero B</div>
+                    <div
+                        style="
+                            background: url(img/superhero-b.svg) no-repeat
+                                center center;
+                            -webkit-background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                            background-size: 100% 100%;
+                            height: 100px;
+                            width: 100px;
+                        "
+                    ></div>
+                </div>
+
+                <div class="character hero-c" data-heroes="hero-c">
+                    <div class="title">Hero C</div>
+                    <div
+                        style="
+                            background: url(img/superhero-c.svg) no-repeat
+                                center center;
+                            -webkit-background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                            background-size: 100% 100%;
+                            height: 100px;
+                            width: 100px;
+                        "
+                    ></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="battle-screen">
+            <div class="fight-btn">fight</div>
+
+            <div class="battle-btns">
+                <div class="attack rock" data-attack="rock">
+                    <img src="img/rock.png" width="100%" />
+                    Rock
+                </div>
+                <div class="attack paper" data-attack="paper">
+                    <img src="img/paper.png" />
+                    Paper
+                </div>
+                <div class="attack scissors" data-attack="scissors">
+                    <img src="img/scissors.png" />
+                    Scissors
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player1">
+                    <div class="stats">
+                        <div class="name">
+                            Hero A
+                            <div class="level">Lv5</div>
+                        </div>
+
+                        <div class="health">
+                            <div class="title">HP:</div>
+                            <div class="health-bar">
+                                <div class="inside" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="img/superhero-a.svg" />
+                </div>
+            </div>
+
+            <div class="cpu">
+                <div class="player2">
+                    <div class="stats">
+                        <div class="name">
+                            Hero B
+                            <div class="level">Lv5</div>
+                        </div>
+
+                        <div class="health">
+                            <div class="title">HP:</div>
+                            <div class="health-bar">
+                                <div class="inside" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="img/superhero-a.svg" />
+                </div>
+            </div>
+        </div>
+
+        <!-- <script src="js/components/vendor.js"></script> -->
+        <script src="js/components/regularJS.js"></script>
+    </body>
+</html>

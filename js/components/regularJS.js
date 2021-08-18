@@ -1,7 +1,3 @@
-webpackJsonp([0],[
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -20,7 +16,7 @@ var gameState = {
     attack: 52,
     defense: 43,
     level: 1,
-    img: "https://images.tre-marshall.com/rps-game/superhero-a.svg"
+    img: "img/superhero-a.svg"
   }, {
     name: "hero-b",
     type: "earth",
@@ -28,7 +24,7 @@ var gameState = {
     attack: 49,
     defense: 49,
     level: 1,
-    img: "https://images.tre-marshall.com/rps-game/superhero-b.svg"
+    img: "img/superhero-b.svg"
   }, {
     name: "hero-c",
     type: "water",
@@ -36,7 +32,7 @@ var gameState = {
     attack: 48,
     defense: 65,
     level: 1,
-    img: "https://images.tre-marshall.com/rps-game/superhero-c.svg"
+    img: "img/superhero-c.svg"
   }],
 
   elements: { // picking essential elements referenced through the game
@@ -273,5 +269,4 @@ fix health bar overfill
 
 */
 
-/***/ })
-],[0]);
+/***/
